@@ -578,7 +578,7 @@ class AppTranslations extends Translations {
       "Don’t Have an account yet? Sign Up": "Pas encore de compte ? Inscrivez-vous",
       "zigzagbus": "Routeka",
       "Date": "Date",
-      "Today": "Maintenant",
+      "Today": "Go !!",
       "From": "Gare de Départ",
       "Home": "Accueil",
       "My Ticket": "Mes billets",
