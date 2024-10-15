@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:cinetpay/cinetpay.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,6 +31,7 @@ import '../Payment_Getway/senangpay.dart';
 import '../Payment_Getway/stripeweb.dart';
 import '../config/config.dart';
 import '../config/light_and_dark.dart';
+import '../payment_getway/cinetpay.dart';
 import 'search_bus_screen.dart';
 
 class Payment_Screen extends StatefulWidget {
@@ -566,34 +568,37 @@ class _Payment_ScreenState extends State<Payment_Screen> {
                                                           }
                                                         });
                                                       }
-                                                      // else if(from12.paymentdata[payment].title == "Midtrans"){
-                                                      //   Get.to(() => MidTrans(
-                                                      //     totalAmount: totalPayment.toStringAsFixed(2),
-                                                      //     email: userData['email'],
-                                                      //     mobilenumber: userData['mobile'],
-                                                      //   ))!
-                                                      //       .then((otid) {
-                                                      //     if (otid != null) {
-                                                      //       Book_Ticket( uid: widget.uid, bus_id: widget.bus_id,pick_id: widget.pick_id, dropId: widget.dropId, ticketPrice: widget.ticketPrice,trip_date: widget.trip_date,paymentId: "$otid",boardingCity: widget.boardingCity,dropCity: widget.dropCity,busPicktime: widget.busPicktime,busDroptime: widget.busDroptime,Difference_pick_drop: widget.differencePickDrop);
-                                                      //     } else {
-                                                      //       Get.back();
-                                                      //     }
-                                                      //   });
-                                                      // }
-                                                      // else if(from12.paymentdata[payment].title == "MercadoPago"){
-                                                      //   Get.to(() => merpago(
-                                                      //     totalAmount: totalPayment.toStringAsFixed(2),
-                                                      //   ))!
-                                                      //       .then((otid) {
-                                                      //     if (otid != null) {
-                                                      //       // WalletUpdateApi(userData['id']);
-                                                      //       Book_Ticket( uid: widget.uid, bus_id: widget.bus_id,pick_id: widget.pick_id, dropId: widget.dropId, ticketPrice: widget.ticketPrice,trip_date: widget.trip_date,paymentId: "$otid",boardingCity: widget.boardingCity,dropCity: widget.dropCity,busPicktime: widget.busPicktime,busDroptime: widget.busDroptime,Difference_pick_drop: widget.differencePickDrop);
-                                                      //       Fluttertoast.showToast(msg: 'Payment Successfully',timeInSecForIosWeb: 4);
-                                                      //     } else {
-                                                      //       Get.back();
-                                                      //     }
-                                                      //   });
-                                                      // }
+                                                      else if (from12.paymentdata[payment].title == 'Cinetpay'){
+                                                        Get.to(CinetPayCheckout(
+                                                            title: 'Guichet de transaction Routeka',
+                                                            configData: <String, dynamic> {
+                                                              'apikey': '63166275965f879eebbcf60.62241459',
+                                                              'site_id':'5878408',
+                                                              'notify_url': 'https://kpanel.routeka.com/cinetpay/Notify_url.php'
+                                                            },
+                                                            paymentData: <String, dynamic>{
+                                                              'transaction_id': genererNumeroID(),
+                                                              'amount': totalPayment.toStringAsFixed(2),
+                                                              'currency': 'XOF',
+                                                              'channels': 'ALL',
+                                                              'description': 'Payment Routeka',
+                                                              'customer_country':'CI'
+
+                                                            },
+                                                            waitResponse: (response) {
+                                                              print(response);
+                                                            },
+                                                            onError: (error) {
+                                                              print(error);
+                                                            }))!.then((otid) {
+                                                          Get.back();
+                                                          if (otid != null) {
+                                                            Book_Ticket( uid: widget.uid, bus_id: widget.bus_id,pick_id: widget.pick_id, dropId: widget.dropId, ticketPrice: widget.ticketPrice,trip_date: widget.trip_date,paymentId: "$otid",boardingCity: widget.boardingCity,dropCity: widget.dropCity,busPicktime: widget.busPicktime,busDroptime: widget.busDroptime,Difference_pick_drop: widget.differencePickDrop);
+                                                          } else {
+                                                            Get.back();
+                                                          }
+                                                        });
+                                                      }
 
                                                       else{
                                                         Get.back();
@@ -602,6 +607,7 @@ class _Payment_ScreenState extends State<Payment_Screen> {
                                                             content: Text('Not Valid'.tr),behavior: SnackBarBehavior.floating, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
                                                         );
                                                       }
+
                                                     },
                                                     child: Center(
                                                       child: RichText(text:  TextSpan(
