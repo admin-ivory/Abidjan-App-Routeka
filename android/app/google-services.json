@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175383331101",
+    "project_id": "routeka-abidjan",
+    "storage_bucket": "routeka-abidjan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175383331101:android:15c59e970df31b73e321f4",
+        "android_client_info": {
+          "package_name": "abidjan.routeka.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Przxaw6AR2IyhbQcVre97A7vC9bFLQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
