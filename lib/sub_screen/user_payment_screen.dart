@@ -526,7 +526,7 @@ class _Payment_ScreenState extends State<Payment_Screen> {
                                                         Get.back();
                                                         stripePayment();
                                                       }
-                                                      else if(from12.paymentdata[payment].title == "FlutterWave"){
+                                                      else if(from12.paymentdata[payment].title == "Carte"){
                                                         Get.to(() => Flutterwave(
                                                             totalAmount: totalPayment.toStringAsFixed(2),
                                                             email: userData['email']

@@ -450,7 +450,7 @@ class _My_WalletState extends State<My_Wallet> {
                                                       Get.back();
                                                       stripePayment();
                                                     }
-                                                    else if(from12.paymentdata[payment].title == "FlutterWave"){
+                                                    else if(from12.paymentdata[payment].title == "Carte"){
                                                       Get.to(() => Flutterwave(
                                                           totalAmount: walletController.text,
                                                           email: userData['email']

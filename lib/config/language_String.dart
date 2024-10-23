@@ -661,7 +661,7 @@ class AppTranslations extends Translations {
       "Total Pay": "Paiement total",
       "EXTERNAL_WALLET IS": "EXTERNAL_WALLET EST",
       "ERROR HERE": "ERREUR ICI",
-      "SUCCESS PAYMENT": "PAIEMENT DE SUCCÈS",
+      "SUCCESS PAYMENT": "PAIEMENT SUCCÈS",
       "gender": "genre",
       "seat_no": "numéro de siège",
       "age": "âge",
